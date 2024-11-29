@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using EmbernodeApp.Models;
 using EmbernodeApp.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmbernodeApp.Pages
 {
+    [Authorize] // Schutz hinzufügen
     public class UserDataModel : PageModel
     {
         private readonly CosmosDbService _cosmosDbService;

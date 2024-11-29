@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.46.0" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="3.4.0" />
+    <PackageReference Include="Microsoft.Identity.Web.MicrosoftGraph" Version="3.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
