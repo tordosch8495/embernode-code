@@ -3,11 +3,6 @@ using EmbernodeApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Logging konfigurieren
-builder.Logging.ClearProviders();               // Entfernt alle Standard-Logger
-builder.Logging.AddConsole();                   // Konsolen-Logging (Debugging lokal)
-builder.Logging.AddAzureWebAppDiagnostics();    // Aktiviert Logging für Azure App Service
-
 // Add services to the container.
 builder.Services.AddRazorPages();
 
