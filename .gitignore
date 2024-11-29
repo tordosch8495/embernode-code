@@ -7,3 +7,5 @@ obj/
 .DS_Store
 secrets.json
 appsettings.*.json
+appsettings.json
+secrets.json
