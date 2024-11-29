@@ -1,0 +1,17 @@
+@page
+@model UserDataModel
+@inject EmbernodeApp.Services.CosmosDbService CosmosDbService
+
+<h1>Füge Benutzer-Daten hinzu</h1>
+
+<form method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="UserData.Name" required />
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="UserData.Email" required />
+    </div>
+    <button type="submit">Speichern</button>
+</form>
