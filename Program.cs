@@ -1,9 +1,18 @@
 using Microsoft.Azure.Cosmos;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Identity.Web;
 using EmbernodeApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Azure AD Authentifizierung hinzufügen
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
+
+// Autorisierung aktivieren
+builder.Services.AddAuthorization();
+
+// Razor Pages hinzufügen
 builder.Services.AddRazorPages();
 
 // Cosmos DB Verbindung einrichten
@@ -16,14 +25,12 @@ builder.Services.AddSingleton<CosmosDbService>(options =>
         "testdata"    // Containername
     ));
 
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Konfiguration der HTTP-Anfrage-Pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -32,6 +39,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Authentifizierung und Autorisierung aktivieren
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
